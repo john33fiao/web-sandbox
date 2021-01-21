@@ -1,1 +1,2 @@
-node_modules
+# 노드 모듈 생략
+*/node_modules/
