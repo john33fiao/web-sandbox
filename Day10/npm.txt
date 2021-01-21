@@ -1,0 +1,5 @@
+nodemon
+
+node monitor
+실행중인 폴더 감시 - 파일 수정 - 노드 애플리케이션 재실행
+다음부터는 node {}.js 이거 대신 nodemon {}.js 이렇게 쓰면 된다고 함
