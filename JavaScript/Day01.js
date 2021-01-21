@@ -128,5 +128,81 @@ console.log(arr);
 
 console.log('함수---------');
 
-// https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript#.ed.95.a8.ec.88.98_.28functions.29
-// 위 링크부터 다시 시작할 것
+function add(x,y){
+    var total = x+y;
+    return total;
+}
+
+console.log(add(3, 5));
+
+console.log(add());
+console.log(add(2, 3, 4)); // x, y 이후 값은 무시됨
+
+function add(){
+    var sum = 0;
+    for (var i = 0, j = arguments.length; i<j ; i++){
+        sum += arguments[i];
+    }
+    return sum;
+}
+
+console.log(add(2,3,4,5));
+console.log('평균계산 함수');
+
+function avg(){
+    var sum = 0;
+    for(var i=0, j=arguments.length;i<j; i++){
+        sum += arguments[i];
+    }
+    return sum / arguments.length;
+}
+
+console.log(avg(2,3,4,5));
+
+console.log('Rest 파라미터 문법');
+
+function avg(firstValue,...args){
+    // console.log(firstValue);
+    // console.log(args);
+    var sum = 0;
+    for (let value of args){
+        sum += value;
+    }
+    // return sum / arr.length; // arr은 어디서 온 거임? 내장임?
+    // 아 그냥 문서가 오타 난 거였음, args 써야함
+    // 이렇게 하면 (2+3+4) / 4 가 되기 때문에 평균은 아님
+
+    return (firstValue + sum) / args.length; // 이래야 평균이지요
+}
+
+console.log('평균: '+avg(2,3,4,5));
+
+function avgArray(arr){
+    var sum = 0;
+    for (var i = 0, j=arr.length; i<j; i++){
+        sum+= arr[i];
+    }
+    return sum / arr.length;
+}
+
+console.log('평균: '+avgArray([3,4,5]));
+
+console.log('--------초기화')
+
+var arr22 = [2,3,4];
+
+function avgg(...args) {
+    var sum = 0;
+    for (let value of args) {
+        sum += value;
+    }
+    return sum / args.length ;
+}
+
+console.log('111 : '+avgg.apply(null, [1,1,1]));
+console.log('apply : '+avgg.apply(null, arr22));
+
+console.log('...avg 평균: '+avgg(...arr22));
+
+// 어디서부터 꼬였는지 모르겠으니까 일단 다시 써보자 그냥
+// 꼬인 부분 찾았다, MDN 문서에 오타있었음
