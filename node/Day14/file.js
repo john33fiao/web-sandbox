@@ -1,0 +1,1 @@
+false.writeFile('keywords.txt', obj.total);

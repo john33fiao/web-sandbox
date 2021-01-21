@@ -1,0 +1,52 @@
+// language.jade
+
+extends layout
+
+html
+    head
+    body
+        block content
+            h1 = title
+            p Welcome to #{title}
+
+            // 계층구조 잘못 입력하면 500에러 난다
+            // 근데 방금 해보니 안나더라? 또 JS답게 일단 실행하고 보는 거임?
+            div#goormDiv1
+                p 얍얍
+            div#goormDiv2
+                p 으리얍얍
+                p 이렇게 # 으로 ID 부여하고
+            div.divStyle2 
+                p 이렇게 . 으로 CLASS 부여하는 거임
+                p 아 id랑 class 소문자로 쓰던가 뭐 아무튼 그렇다네요
+            .divstyle3
+                #goormDiv3 이렇게 그냥 막 쓰면 어떻게되나요?
+                #goormDiv4 아 그냥 div 안에 텍스트 넣어버리는구나
+            .divInput1
+                #contents(style="border : 1px solid black")
+                    // p 라벨
+                    input(type= "checkbox", checked) 
+                    //- 여러 속성 부여할 때는 쉼표(,) 사용
+
+                    // 이거는 html 주석
+                    //- 이거는 jade 주석
+
+            #goormElement1
+                | 여러 줄 입력
+                | 이렇게 하면 되는 건가
+                | 아하, 그냥 텍스트 입력으로 엔터키(HTML 띄어쓰기)로 되는 것 같다
+                br
+                | 이렇게 하면 된다고요? 
+                br
+                | 오 된다 개신기함
+            #goormElement2 동적 콘텐츠를 구현해보겠습니다. 
+                div#subject #{title}
+                div 아니 거 잠시만요 이거는 그냥 get 이잖아요
+                div#msg #{message} 
+                div 아니네요 아 다행이다
+                // #{title} 주석 안에 넣는 것도 되려나
+                // 아 안되네 아쉽다
+            #goormElement3 이번엔 태그를 가져와볼게요
+                #subject1 !{content}
+                //- 태그를 가져오려면 # 대신 ! 를 사용해야함
+            

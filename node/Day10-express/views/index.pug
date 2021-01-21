@@ -1,0 +1,16 @@
+// index.pug
+// 2020-11-09
+
+extends layout
+
+html
+    head
+        title = title
+    body
+        h1 Hello #{title}
+        ul
+            -for(var i=0 ; i<5 ; i++)
+                li 순서 없는 목록 #{i + 1}
+        ol
+            -for(var i=0 ; i<5 ; i++)
+                li 순서 있는 목록 #{i + 1}
