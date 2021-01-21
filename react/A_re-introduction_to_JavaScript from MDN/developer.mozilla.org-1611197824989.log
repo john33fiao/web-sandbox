@@ -1,0 +1,300 @@
+0.1+0.2
+0.30000000000000004
+1.1+1.2
+2.3
+1+2
+3
+Math.sin(3.5);
+-0.35078322768961984
+2*Math.PI*r;
+VM238:1 Uncaught ReferenceError: r is not defined
+    at <anonymous>:1:11
+(anonymous) @ VM238:1
+2*Math.PI*4;
+25.132741228718345
+parseInt('123', 10);
+123
+parseInt('123', 5);
+38
+parseInt('123', 2);
+1
+parseInt('123', 10);
+123
+parseInt('100', 2);
+4
+parseInt('100');
+100
+parseInt('010');
+10
+parseInt('0x10');
+16
+parseInt('6FAB', 16);
+28587
+parseInt('FF', 16);
+255
+parseInt('FFFFFF', 16);
+16777215
++ '42'
+42
++ '0x10'
+16
+parseInt('hello', 10);
+NaN
+toUpperCase(parseInt('hello', 10));
+VM684:1 Uncaught ReferenceError: toUpperCase is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM684:1
+parseInt('hello', 10).toString
+ƒ toString() { [native code] }
+parseInt('hello', 10).toString();
+"NaN"
+parseInt('hello', 10).toString().toUpperCase();
+"NAN"
+console.log('b' + 'a' ++ 'a' + 'a').toLowerCase();
+VM888:1 Uncaught SyntaxError: Invalid left-hand side expression in postfix operation
+('b' + 'a' ++ 'a' + 'a').toString();
+VM965:1 Uncaught SyntaxError: Invalid left-hand side expression in postfix operation
+NaN
+NaN
+Nan + 5;
+VM1020:1 Uncaught ReferenceError: Nan is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1020:1
+NaN.toString().toUpperCase() + 'A';
+"NANA"
+console.log('이게 왜 되고 난리임ㅋㅋㅋ');
+VM1235:1 이게 왜 되고 난리임ㅋㅋㅋ
+undefined
+isNan(Nan);
+VM1279:1 Uncaught ReferenceError: isNan is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1279:1
+isNan(NaN);
+VM1293:1 Uncaught ReferenceError: isNan is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1293:1
+isNaN(NaN);
+true
+1/0
+Infinity
+-1/0
+-Infinity
+1/-0
+-Infinity
+isFinite(1/0);
+false
+isFinite(30);
+true
+isFinite(NaN);
+false
+parseInt(10.2abc);
+VM1622:1 Uncaught SyntaxError: Invalid or unexpected token
++ (10.2);
+10.2
++ (10.2abc);
+VM1666:1 Uncaught SyntaxError: Invalid or unexpected token
++ (abc);
+VM1674:1 Uncaught ReferenceError: abc is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1674:1
+parseFloat('abc');
+NaN
+parseFloat('10.2abc');
+10.2
+parseInt('10.2abc');
+10
+"숫자는 계속 파싱하고, 문자가 나오면 파싱 중단"
+"숫자는 계속 파싱하고, 문자가 나오면 파싱 중단"
+NaN.toString().length();
+VM2026:1 Uncaught TypeError: NaN.toString(...).length is not a function
+    at <anonymous>:1:16
+(anonymous) @ VM2026:1
+NaN.toString().length;
+3
+"length는 함수가 아니라 속성임"
+"length는 함수가 아니라 속성임"
+'hello world'.charAt["3"];
+undefined
+'hello world'.charAt["length"]"];
+VM2240:1 Uncaught SyntaxError: Invalid or unexpected token
+'hello world'.charAt["length"]
+1
+'hello world'.length
+11
+'hello world'.charat(3)'
+VM2381:1 Uncaught SyntaxError: Invalid or unexpected token
+'hello world'.charat(3);
+VM2392:1 Uncaught TypeError: "hello world".charat is not a function
+    at <anonymous>:1:15
+(anonymous) @ VM2392:1
+'hello world'.charAt(3);
+"l"
+'hello world'.charAt(0);
+"h"
+'hello world'.repeat
+ƒ repeat() { [native code] }
+'hello world'.replace('hello', 'goodbye');
+"goodbye world"
+'hello world'.toUpperCase();
+"HELLO WORLD"
+"문자열은 객체임, length는 그 객체의 속성임"
+"문자열은 객체임, length는 그 객체의 속성임"
+var asd;
+undefined
+asd
+undefined
+asd = 10; console.log(asd);
+VM2834:1 10
+undefined
+console.log(asd);
+VM2852:1 10
+undefined
+asd
+10
+false
+false
+1=2;
+VM2925:1 Uncaught SyntaxError: Invalid left-hand side in assignment
+1==2;
+false
+(1==2).toString();
+"false"
+asdf
+VM3028:1 Uncaught ReferenceError: asdf is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM3028:1
+asd
+10
+console.log(NaN);
+VM3092:1 NaN
+undefined
+Boolean('');
+false
+Boolean(1==2);
+false
+Boolean(asdf);
+VM3189:1 Uncaught ReferenceError: asdf is not defined
+    at <anonymous>:1:9
+(anonymous) @ VM3189:1
+Boolean(undefined);
+false
+if(1) console.log("됨?");
+VM3417:1 됨?
+undefined
+'3' + 4 + 5
+"345"
+4+5+'3'
+"93"
+==
+VM3474:1 Uncaught SyntaxError: Unexpected token '=='
+3==2
+false
+3=='3'
+true
+3==='3'
+false
+1==true
+true
+Boolean('') == false
+true
+Boolean('') === false
+true
+var input = get_input();
+VM3724:1 Uncaught ReferenceError: get_input is not defined
+    at <anonymous>:1:13
+(anonymous) @ VM3724:1
+for(let i = 1, i<10, i++) { for(let j=1, j<10, j++) { console.log(i*j + ' ' ); } }
+VM3935:1 Uncaught SyntaxError: Identifier 'i' has already been declared
+for(let iii = 1, iii<10, iii++) { for(let jjj=1, jjj<10, jjj++) { console.log(i*j + ' ' ); } }
+VM3975:1 Uncaught SyntaxError: Identifier 'iii' has already been declared
+for(var iii = 1, iii<10, iii++) { for(var jjj=1, jjj<10, jjj++) { console.log(i*j + ' ' ); } }
+VM4029:1 Uncaught SyntaxError: Unexpected token '<'
+for(var iii = 1 ; iii<10 ; iii++) { for(var jjj=1 ; jjj<10 : jjj++) { console.log(i*j + ' ' ); } }
+VM4058:1 Uncaught SyntaxError: Unexpected token ':'
+for(var i = 1 ; i<10 ; i++ ) { for(var j=1 ; j<10 : j++) { console.log(i*j + ' ' ); } }
+VM4093:1 Uncaught SyntaxError: Unexpected token ':'
+for(var i = 1 ; i<10 ; i++ ) { for(var j=1 ; j<10 : j++) { console.log(i*j + ' ' ) } }
+VM4100:1 Uncaught SyntaxError: Unexpected token ':'
+for(var i = 1 ; i<10 ; i++ ) {console.log(i)}
+VM4138:1 1
+VM4138:1 2
+VM4138:1 3
+VM4138:1 4
+VM4138:1 5
+VM4138:1 6
+VM4138:1 7
+VM4138:1 8
+VM4138:1 9
+undefined
+var ii = new Array();
+undefined
+ii.length
+0
+ii.push(1);
+1
+ii.push(2);
+2
+ii.push(3);
+3
+ii.length
+3
+for (let value of ii) {console.log(ii)}
+VM4519:1 (3) [1, 2, 3]
+VM4519:1 (3) [1, 2, 3]
+VM4519:1 (3) [1, 2, 3]
+undefined
+for (ii) {console.log(ii)}
+VM4548:1 Uncaught SyntaxError: Unexpected token ')'
+for (let value of ii) {console.log(ii[value])}
+VM4579:1 2
+VM4579:1 3
+VM4579:1 undefined
+undefined
+ii.push(0);
+4
+for (let value of ii) {console.log(ii[value])}
+VM4625:1 2
+VM4625:1 3
+VM4625:1 0
+VM4625:1 1
+undefined
+var ss = "hello world";
+undefined
+for (let property in ss) {console.log(ss)}
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+VM4797:1 hello world
+undefined
+for (let property in ss) {console.log(ss[property])}
+VM4818:1 h
+VM4818:1 e
+VM4818:1 l
+VM4818:1 l
+VM4818:1 o
+VM4818:1  
+VM4818:1 w
+VM4818:1 o
+VM4818:1 r
+VM4818:1 l
+VM4818:1 d
+undefined
+var name = o && o.getName();
+VM4882:1 Uncaught ReferenceError: o is not defined
+    at <anonymous>:1:12
+(anonymous) @ VM4882:1
+var allowed = (ii.length > 1) ? "yes" : "no" ;
+undefined
+allowed
+"yes"
+var allowed = (ii.length > 5) ? "5개 초과" : "5개 이하" ;
+undefined
+allowed 
+"5개 이하"
