@@ -91,26 +91,3 @@ var charsInBody = (function counter(elm) {
 
 // 함수는 객체임, 속성 추가/변경 가능
 // 함수 표현식에 제공된 이름은 함수 자체 범위에서만 유효함
-
-console.log('사용자 정의 객체-----------');
-
-// JS에서는 class 구문이 없고, function을 클래스로 사용함
-// 프로토타입 기반 언어
-
-function makePerson(first, last) {
-    return {
-        first: first,
-        last: last
-    }
-}
-
-function personFullName(person) {
-    return person.first + ' ' + person.last;
-}
-
-function personFullNameReserved(person) {
-    return person.last + ', ' + person.first;
-}
-
-var s = makePerson("John", "Seo");
-personFullName(s);
