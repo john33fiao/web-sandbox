@@ -45,5 +45,52 @@ function avggg(...args){
 
 avggg(2,2,2,2,2);
 
-// 이 특징은 매우 강력한데, 일반적인 표현식(expression)을 사용할 수있는 어디에서나 완전한 함수 정의를 넣을 수 있도록 허용하는 것이기 때문입니다.
-// 위 문구로 검색해서 계속 진행할 것
+// 지역 변수 숨기기
+// var도 지역 변수로 사용 가능?
+
+var a = 1; 
+var b = 2;
+
+(function(){
+    var b = 3;
+    console.log('function 내부에서 선언한 b : '+b);
+    a +=b;
+})();
+
+console.log('a : '+a+' / b : '+b);
+
+console.log('재귀함수--------');
+
+// DOM 트리구조 다루기에 용이함?
+
+function countChars(elm){
+    if(elm.nodeType == 3){  // 텍스트 노드인 경우?
+        return elm.nodeValue.length;
+    }
+    var count = 0;
+    for (var i=0, child; child= elm.childNodes[i]; i++){
+        count += countChars(child);
+    }
+    return count;
+}
+
+// 거 부연설명 좀 해주고 씁시다... 너무하시네... 
+
+// 익명 재귀함수 호출방식
+
+var charsInBody = (function counter(elm){
+    if (elm.nodeType == 3){
+        return elm.nodeValue.length;
+    }
+    var count = 0;
+    for (var i =0, child ; child = elm.childNodes[i]; i++){
+        count += counter(child);
+    }
+    return count;
+})(document.body);
+
+// 함수는 객체임, 속성 추가/변경 가능
+// 함수 표현식에 제공된 이름은 함수 자체 범위에서만 유효함
+
+console.log('사용자 정의 객체-----------');
+
