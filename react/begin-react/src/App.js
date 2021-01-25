@@ -51,3 +51,5 @@ function App() {
 }
 
 export default App;
+// https://react.vlpt.us/basic/05-props.html
+// 위 링크부터 진행할 것
