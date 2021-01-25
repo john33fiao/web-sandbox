@@ -11,8 +11,11 @@
     <h1>리액트 연습</h1>
     <div id="like_button_container"></div>
 </body>
-<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<!-- <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script> -->
+<!-- 위에꺼 그냥 쓰면 성능저하 발생 - 아래 JS 압축버전 이용 -->
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 <script src="like_button.js"></script>
 
 </html>
