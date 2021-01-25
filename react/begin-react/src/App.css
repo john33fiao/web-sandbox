@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* 내가 만들어 쓸 거니까 위에 기본값은 모두 삭제 */
+
+/* CSS class 설정할 때는 className= 으로 설정해야함 */
+
+.gray-box{
+  background: gray;
+  width: 64px;
+  height: 64px;
 }
