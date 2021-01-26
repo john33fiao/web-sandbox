@@ -1,24 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter'
+import InputSample from './InputSample'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Counter/>
+      <hr/>
+      {/* 얘는 그냥 내가 임시로 넣었다, 구분 좀 하자고요 */}
+      <InputSample/>
+      
+    </>
   );
 }
 
