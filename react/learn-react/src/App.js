@@ -9,7 +9,7 @@ function App() {
       <Counter/>
       <hr/>
       {/* 얘는 그냥 내가 임시로 넣었다, 구분 좀 하자고요 */}
-      <InputSample/>
+      <InputSample isSpecial={true}/>
       
     </>
   );
