@@ -4,6 +4,7 @@
 import React from 'react';
 import Hello from './Hello';
 import './App.css';
+import Wrapper from './Wrapper'
 
 function App() {
   const name = 'React';
@@ -32,6 +33,16 @@ function App() {
       <div style={style}>Hello {name}</div>
       {/* JS 변수 보여줄 때는 {}으로 감싸면 됨 */}
       <div className="gray-box"></div>
+      <Hello name = "react"/>
+      <Hello name="react" color='red'/>
+      <Hello color='blue'/>
+      <Wrapper>
+        <Hello name="react" color="red"/>
+        <Hello color="pink"/>
+        {/* 지금은 콘텐츠 안보이고 그냥 사각형만 보일 것임 */}
+        {/* props.children 렌더링 필요함 */}
+      </Wrapper>
+
     </>
     // 슬래시 주석 가능함
     // 뭔소리냐면, 위에는 HTML이 아니라 JS라는 뜻임
@@ -51,5 +62,3 @@ function App() {
 }
 
 export default App;
-// https://react.vlpt.us/basic/05-props.html
-// 위 링크부터 진행할 것
