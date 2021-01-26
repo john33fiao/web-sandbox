@@ -50,7 +50,8 @@ function App() {
         {/* JS 값이니까 중괄호로 감싼다 */}
         <Hello color='pink'/>
 
-        
+        <Hello name="react" color="aqua" isSpecial/>
+        {/* 이렇게 값 설정 생략하면 isSpecial={true}랑 동일한 의미임 */}
 
       </Wrapper>
 

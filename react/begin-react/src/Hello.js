@@ -17,6 +17,11 @@ function Hello({color, name, isSpecial}){
         </div>
         {/* isSpecial 값이 true면 별 찍고 아니면 null 찍음 */}
         {/* JSX에서 null, false, undefined 렌더링하면 아무것도 안나타남 */}
+        {/* 특정 조건에 따라 보여줌/가림 처리하는 건데, 이 상황에서는 && 연산자가 더 편할 수 있음 */}
+        <div style={{color}}>
+            {isSpecial && <b>*</b>}
+            안녕하세요 {name} 
+        </div>
 
     </>
     // 전달받은 properties 표시
@@ -26,7 +31,7 @@ function Hello({color, name, isSpecial}){
 // defaultProps로 기본값 설정
 // props 지정하지 않은 경우 기본적으로 사용할 값 설정
 Hello.defaultProps = {
-    name : '파란색으로 보이는 이름없음'
+    name : '파란색은 아닐 때도 있지만 아무튼 Default인 이름없음'
 }
 
 export default Hello;
