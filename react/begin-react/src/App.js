@@ -36,11 +36,22 @@ function App() {
       <Hello name = "react"/>
       <Hello name="react" color='red'/>
       <Hello color='blue'/>
+
+
       <Wrapper>
         <Hello name="react" color="red"/>
         <Hello color="pink"/>
         {/* 지금은 콘텐츠 안보이고 그냥 사각형만 보일 것임 */}
         {/* props.children 렌더링 필요함 */}
+
+        {/* 조건부 렌더링 */}
+        <Hello name='react' color='red' isSpecial={true}/>
+        {/* 특정 조건에 따라 다른 결과물 렌더링 */}
+        {/* JS 값이니까 중괄호로 감싼다 */}
+        <Hello color='pink'/>
+
+        
+
       </Wrapper>
 
     </>

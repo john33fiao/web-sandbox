@@ -5,11 +5,19 @@ import React from 'react';
 
 // function Hello({props}){
 // 아래는 비구조화 할당(구조 분해라고도 함)
-function Hello({color, name}){
+function Hello({color, name, isSpecial}){
     return <>
         {/* <div>안녕하세요 {props.name}</div>
         <div style={{color:props.color}}>안녕하세요 {props.name}</div> */}
         <div style={{color}}>안녕하세요 {name}입니다</div>
+
+        <div style={{color}}>
+            {isSpecial ? <b>*</b> : null}
+            안녕하세요 isSpecial {name}입니다
+        </div>
+        {/* isSpecial 값이 true면 별 찍고 아니면 null 찍음 */}
+        {/* JSX에서 null, false, undefined 렌더링하면 아무것도 안나타남 */}
+
     </>
     // 전달받은 properties 표시
     // 객체 형태로 전달함
