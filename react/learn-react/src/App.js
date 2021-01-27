@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, {useMemo, useRef, useState} from 'react'
+import React, {useCallback, useMemo, useRef, useState} from 'react'
 import Counter from './Counter'
 import InputSample from './InputSample'
 import UserListVer1 from './UserListVer1';
@@ -14,6 +14,7 @@ function countActiveUsers(users){
 }
 
 function App() {
+  
   const [inputs, setInputs] = useState({
     username: '',
     email:''
@@ -81,20 +82,41 @@ function App() {
     nextId.current +=1;
   }
 
-  const onRemove = id => {
-    // user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열 생성
-    // user.id가 id인 것을 제거하는 로직
-    setUsers(users.filter(user => user.id !== id));
-  }
+  // const onRemove = id => {
+  //   // user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열 생성
+  //   // user.id가 id인 것을 제거하는 로직
+  //   setUsers(users.filter(user => user.id !== id));
+  // }
+
+  // 위 함수를 아래의 useCallback 으로 대체
+
+  const onRemove = useCallback(
+    id => {
+      setUsers(users.filter(user => user.id !== id));
+    }, [users]
+  );
+
+  // const onToggle = id => {
+  //   setUsers(
+  //     users.map(user => 
+  //       user.id === id ? {...user, active : !user.active} : user
+  //       // id 값 비교해서 id 다르면 그대로 두고, 같으면 active값 반전
+  //     )
+  //   );
+  // };
   
-  const onToggle = id => {
-    setUsers(
-      users.map(user => 
-        user.id === id ? {...user, active : !user.active} : user
-        // id 값 비교해서 id 다르면 그대로 두고, 같으면 active값 반전
-      )
+    // 위 함수를 아래의 useCallback 적용으로 대체
+
+    const onToggle = useCallback(
+      id => {
+        setUsers(
+          users.map(user => 
+            user.id === id ? {...user, active: !user.active} : user
+          )
+        );
+      }, 
+      [users]
     );
-  };
 
   // const count = countActiveUsers(users); // 이 기본상태에서는 리랜더링시마다 호출함
   const count = useMemo(

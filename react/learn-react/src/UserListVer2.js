@@ -14,8 +14,8 @@
 
 import React, {useEffect} from 'react';
 
-function User({user, onRemove, onToggle}){
-
+// function User({user, onRemove, onToggle}){
+const User = React.memo(function User({user, onRemove, onToggle}){
     useEffect(
         () => {
             console.log('컴포넌트가 화면에 나타남');
@@ -77,7 +77,7 @@ function User({user, onRemove, onToggle}){
             <button onClick={() => onRemove(user.id)}>삭제</button>
         </div>
     );
-}
+});
 
 function UserListVer2 ({users, onRemove, onToggle}){
     return (

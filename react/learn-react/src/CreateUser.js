@@ -2,7 +2,10 @@
 
 import React from 'react';
 
-function CreateUser ({username, email, onChange, onCreate}){
+// function CreateUser ({username, email, onChange, onCreate}){
+    // 위 방식대로 하면 항상 리랜더링함
+const CreateUser = ({username, email, onChange, onCreate}) => {
+    // 이렇게 그냥 감싸주기만 해도 됨 > 필요한 상황에서만 리랜더링함
     return (
         <div>
             <h3>인풋필드</h3>
@@ -21,7 +24,7 @@ function CreateUser ({username, email, onChange, onCreate}){
             <button onClick={onCreate}>등록</button>
         </div>
     );
-}
+};
 
 export default CreateUser;
 
