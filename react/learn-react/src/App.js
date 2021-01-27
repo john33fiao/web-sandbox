@@ -72,6 +72,12 @@ function App() {
     nextId.current +=1;
   }
 
+  const onRemove = id => {
+    // user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열 생성
+    // user.id가 id인 것을 제거하는 로직
+    setUsers(users.filter(user => user.id !== id));
+  }
+
   return (
     <>
       <Counter/>
@@ -83,7 +89,7 @@ function App() {
       <hr/>
       <UserList/>
       <hr/>
-      <UserListVer2 users = {users}/>
+      {/* <UserListVer2 users = {users}/> */}
       <hr/>
       <CreateUser
         username={username}
@@ -91,7 +97,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserListVer2 users={users}/>
+      <UserListVer2 users={users} onRemove={onRemove}/>
       {/* 값 초기화는 잘 되는 것 확인함 */}
       {/* users도 useState로 컴포넌트의 상태로 관리해봅시다 */}
     </>
