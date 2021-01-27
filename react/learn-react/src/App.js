@@ -1,12 +1,17 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, {useRef, useState} from 'react'
+import React, {useMemo, useRef, useState} from 'react'
 import Counter from './Counter'
 import InputSample from './InputSample'
 import UserListVer1 from './UserListVer1';
 import UserList from './UserList';
 import UserListVer2 from './UserListVer2';
 import CreateUser from './CreateUser';
+
+function countActiveUsers(users){
+  console.log('활성 사용자 수를 세는 중...');
+  return users.filter(user => user.active).length;
+}
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -91,6 +96,11 @@ function App() {
     );
   };
 
+  // const count = countActiveUsers(users); // 이 기본상태에서는 리랜더링시마다 호출함
+  const count = useMemo(
+    () => countActiveUsers(users), [users]
+  );
+
   return (
     <>
       <Counter/>
@@ -113,6 +123,7 @@ function App() {
       <UserListVer2 users={users} onRemove={onRemove} onToggle={onToggle}/>
       {/* 값 초기화는 잘 되는 것 확인함 */}
       {/* users도 useState로 컴포넌트의 상태로 관리해봅시다 */}
+      <div>활성 사용자 수 : {count}</div>
     </>
   );
 }
