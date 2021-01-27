@@ -29,19 +29,23 @@ function App() {
     {
       id: 1,
       username: 'velopert',
-      email: 'public.velopert@gmail.com'
+      email: 'public.velopert@gmail.com',
+      active: true
     },
     {
       id: 2,
       username: 'tester',
-      email: 'tester@example.com'
+      email: 'tester@example.com',
+      active: false
     },
     {
       id: 3,
       username: 'liz',
-      email: 'liz@example.com'
+      email: 'liz@example.com',
+      active: false
     }
   ]);
+  // 배열 항목 수정하기 목적, active 속성 추가함
 
   const nextId = useRef(4);
 
@@ -77,6 +81,15 @@ function App() {
     // user.id가 id인 것을 제거하는 로직
     setUsers(users.filter(user => user.id !== id));
   }
+  
+  const onToggle = id => {
+    setUsers(
+      users.map(user => 
+        user.id === id ? {...user, active : !user.active} : user
+        // id 값 비교해서 id 다르면 그대로 두고, 같으면 active값 반전
+      )
+    );
+  };
 
   return (
     <>
@@ -97,7 +110,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserListVer2 users={users} onRemove={onRemove}/>
+      <UserListVer2 users={users} onRemove={onRemove} onToggle={onToggle}/>
       {/* 값 초기화는 잘 되는 것 확인함 */}
       {/* users도 useState로 컴포넌트의 상태로 관리해봅시다 */}
     </>

@@ -14,21 +14,38 @@
 
 import React from 'react';
 
-function User({user, onRemove}){
+function User({user, onRemove, onToggle}){
     return (
         <div>
-            <b>{user.username}</b>
+            <b
+                style={{
+                    cursor: 'pointer',
+                    // 마우스 올렸을 때 커서 변경
+                    color: user.active ? 'green' : 'black'
+                }}
+                // active 값에 따라 녹색/검은색 설정
+                onClick = {
+                    () => onToggle(user.id)
+                }
+            >
+                {user.username}
+            </b>
             <span>({user.email})</span>
             <button onClick={() => onRemove(user.id)}>삭제</button>
         </div>
     );
 }
 
-function UserListVer2 ({users, onRemove}){
+function UserListVer2 ({users, onRemove, onToggle}){
     return (
         <div>
             {users.map(user => (
-                <User user={user} key={user.id} onRemove={onRemove}/>
+                <User 
+                    user={user} 
+                    key={user.id} 
+                    onRemove={onRemove}
+                    onToggle={onToggle}
+                />
             ))}
         </div>
     );
