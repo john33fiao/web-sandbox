@@ -81,6 +81,9 @@ class Board extends React.Component {
       // 이전 버전 이력을 유지하고 재사용
       // 변화 감지 > 복잡도 낮춤
       // 리액트에서 렌더링 시기 결정
+      if(calculateWinner(squares) || squares[i]){
+        return;
+      }
       squares[i] = this.state.xIsNext ? 'X' : 'O';
       // 'X';
       this.setState({
@@ -114,8 +117,16 @@ class Board extends React.Component {
 
 
   render() {
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if(winner){
+      status = 'Winner' + winner;
+    } else {
+      status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+    
     // const status = 'Next player: X';
-    const status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+    // const status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
