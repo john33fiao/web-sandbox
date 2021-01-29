@@ -60,7 +60,18 @@ class Board extends React.Component {
     // 자식으로부터 데이터를 모으거나, 자식 컴포넌트간에 통신
     // 부모 컴포넌트에 공유 state 정의
     // 부모에서 props를 사용해서 자식 컴포넌트에 state 전달 및 동기화
-
+    
+    handleClick(i){
+      const squares = this.state.squars.slice();
+      // 기존 배열을 수정하지 않고 사본을 생성하여 수정함 > 불변성!
+      squares[i] = 'X';
+      this.setState({squares : squares});
+    }
+    // 지금까지와 동일하게 클릭하면 X 채워짐
+    // state가 각 Square 컴포넌트가 아니라 Board 컴포넌트에 채워짐
+    // 모든 사각형의 상태를 유지하여 이후 승자 판결 가능해짐
+    // Square 컴포넌트는 이제 제어 가능함
+    
   renderSquare(i) {
     return (    
         <Square 
