@@ -2,50 +2,63 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 
-class Square extends React.Component {
-    // 버튼 렌더링
+// class Square extends React.Component {
+//     // 버튼 렌더링
 
-    constructor(props){
-        super(props);
-        // JS 클래스에서 하위 클래스 생성자 정의하는 경우 항상 super 호출 필요
-        // 모든 리액트 컴포넌트 클래스는 생성자 가지는 경우 super(props) 호출 구문부터 작성해야함
+//     constructor(props){
+//         super(props);
+//         // JS 클래스에서 하위 클래스 생성자 정의하는 경우 항상 super 호출 필요
+//         // 모든 리액트 컴포넌트 클래스는 생성자 가지는 경우 super(props) 호출 구문부터 작성해야함
 
-        this.state = {
-            value : null,
-        };
+//         this.state = {
+//             value : null,
+//         };
 
-    }
-    // 상태를 기억하기 위해 state 사용
-    // this.state 는 컴포넌트에 대해 비공개
-    // 현재 값을 this.state에 저장하고 Square를 클릭하는 경우 변경
+//     }
+//     // 상태를 기억하기 위해 state 사용
+//     // this.state 는 컴포넌트에 대해 비공개
+//     // 현재 값을 this.state에 저장하고 Square를 클릭하는 경우 변경
     
-  render() {
-    return (
-      <button 
-      className="square" 
-      onClick={
-        // function() {alert('click');}
+//   render() {
+//     return (
+//       <button 
+//       className="square" 
+//       onClick={
+//         // function() {alert('click');}
         
-        // () => alert(this.props.value)
-        // this 동작 쉽게 이해하도록 화살표 함수 적용
-        // onClick prop으로 함수를 전달 > 클릭 시에만 함수 호출
-        // () => // 왼쪽에 쟤 생략하면 렌더링 할 때마다 alert() 호출함
+//         // () => alert(this.props.value)
+//         // this 동작 쉽게 이해하도록 화살표 함수 적용
+//         // onClick prop으로 함수를 전달 > 클릭 시에만 함수 호출
+//         // () => // 왼쪽에 쟤 생략하면 렌더링 할 때마다 alert() 호출함
         
-        // 버튼 onClick 경우 Square 다시 렌더링 필요하다고 리액트에게 알림
-        // setState 호출하면 컴포넌트 내부의 자식 컴포넌트 함께 업데이트
-        // () => this.setState({value : 'X'})}
+//         // 버튼 onClick 경우 Square 다시 렌더링 필요하다고 리액트에게 알림
+//         // setState 호출하면 컴포넌트 내부의 자식 컴포넌트 함께 업데이트
+//         // () => this.setState({value : 'X'})}
         
-        () => this.props.onClick()}
-        // Squard 클릭하면 함수 호출
-      >
-        {/* {this.state.value} */}
-        {/* 값 표시 */}
+//         () => this.props.onClick()}
+//         // Squard 클릭하면 함수 호출
+//       >
+//         {/* {this.state.value} */}
+//         {/* 값 표시 */}
 
-        {this.props.value}
-        {/* 상태가 아니라 인자 전달 */}
-      </button>
-    );
-  }
+//         {this.props.value}
+//         {/* 상태가 아니라 인자 전달 */}
+//       </button>
+//     );
+//   }
+// }
+
+// 함수 컴포넌트로 변경
+function Square(props){
+  return(
+    <button
+      className="square"
+      onClick={props.onClick}
+      // () 괄호가 사라졌음을 확인가능
+    >
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
@@ -54,7 +67,8 @@ class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            squars : Array(9).fill(null),
+            squares : Array(9).fill(null),
+            xIsNext:true,
         };
     }
     // 자식으로부터 데이터를 모으거나, 자식 컴포넌트간에 통신
@@ -62,10 +76,17 @@ class Board extends React.Component {
     // 부모에서 props를 사용해서 자식 컴포넌트에 state 전달 및 동기화
     
     handleClick(i){
-      const squares = this.state.squars.slice();
+      const squares = this.state.squares.slice();
       // 기존 배열을 수정하지 않고 사본을 생성하여 수정함 > 불변성!
-      squares[i] = 'X';
-      this.setState({squares : squares});
+      // 이전 버전 이력을 유지하고 재사용
+      // 변화 감지 > 복잡도 낮춤
+      // 리액트에서 렌더링 시기 결정
+      squares[i] = this.state.xIsNext ? 'X' : 'O';
+      // 'X';
+      this.setState({
+        squares : squares,
+        xIsNext : !this.state.xIsNext,
+      });
     }
     // 지금까지와 동일하게 클릭하면 X 채워짐
     // state가 각 Square 컴포넌트가 아니라 Board 컴포넌트에 채워짐
@@ -77,7 +98,7 @@ class Board extends React.Component {
         <Square 
         // value ={i}
         // 버튼에 value prop 전달
-        value = {this.state.squars[i]} 
+        value = {this.state.squares[i]} 
         // 각 Square에게 현재 값 전달
         
         onClick={() => this.handleClick(i)}
