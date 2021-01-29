@@ -94,6 +94,7 @@ class Board extends React.Component {
     // Square 컴포넌트는 이제 제어 가능함
     
   renderSquare(i) {
+    const status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
     return (    
         <Square 
         // value ={i}
@@ -111,6 +112,10 @@ class Board extends React.Component {
         />
     );
   }
+
+  // 플레이어가 수를 둘 때마다 xIsNext (boolean 값)이 뒤집혀 다음 플레이어가 누군지 결정하고 게임의 state가 저장될 것입니다. Board의 handleClick 함수를 수정하여 xIsNext 값을 뒤집겠습니다.
+
+
 
   render() {
     const status = 'Next player: X';
