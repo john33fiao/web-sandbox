@@ -85,7 +85,7 @@ class Board extends React.Component {
       // 'X';
       this.setState({
         squares : squares,
-        xIsNext : !this.state.xIsNext,
+        xIsNext : !this.state.xIsNext, // 네 턴이야
       });
     }
     // 지금까지와 동일하게 클릭하면 X 채워짐
@@ -94,7 +94,6 @@ class Board extends React.Component {
     // Square 컴포넌트는 이제 제어 가능함
     
   renderSquare(i) {
-    const status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
     return (    
         <Square 
         // value ={i}
@@ -108,17 +107,15 @@ class Board extends React.Component {
         // 이벤트 핸들러는 this.props.onClick() 호출
         // Board에서 Square로 위에 있는 프로퍼티 전달했으므로 this.handleClick(i)호출
         // handleClick 정의 안했으므로 코드 깨지는 것이 정상임
-
         />
     );
   }
 
-  // 플레이어가 수를 둘 때마다 xIsNext (boolean 값)이 뒤집혀 다음 플레이어가 누군지 결정하고 게임의 state가 저장될 것입니다. Board의 handleClick 함수를 수정하여 xIsNext 값을 뒤집겠습니다.
-
 
 
   render() {
-    const status = 'Next player: X';
+    // const status = 'Next player: X';
+    const status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
@@ -165,3 +162,23 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root'),
 );
+
+function calculateWinner(squares){
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i< lines.length; i++){
+    const [a,b,c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
+      return squares[a];
+    }
+  }
+  return null;
+}
