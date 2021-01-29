@@ -168,6 +168,7 @@ class Game extends React.Component {
 }
 
 // ========================================
+// https://ko.reactjs.org/tutorial/tutorial.html#adding-time-travel 여기부터 다시 시작
 
 ReactDOM.render(
   <Game />,
