@@ -70,9 +70,12 @@ class Board extends React.Component {
         // 각 Square에게 현재 값 전달
         
         onClick={() => this.handleClick(i)}
+        // 리액트에 클릭 이벤트 설정하라고 전달
+        // 버튼 클릭하면 render() 함수에 정의된 onClick 이벤트 핸들러 호출
+        // 이벤트 핸들러는 this.props.onClick() 호출
+        // Board에서 Square로 위에 있는 프로퍼티 전달했으므로 this.handleClick(i)호출
         // handleClick 정의 안했으므로 코드 깨지는 것이 정상임
-        // https://ko.reactjs.org/tutorial/tutorial.html#lifting-state-up 여기부터 계속 진행
-        // Square를 클릭하면 Board에서 넘겨받은 onClick 함수가 호출됩니다. 이 때 일어나는 일을 정리해보겠습니다.
+
         />
     );
   }
