@@ -75,46 +75,26 @@ class Board extends React.Component {
     // 부모 컴포넌트에 공유 state 정의
     // 부모에서 props를 사용해서 자식 컴포넌트에 state 전달 및 동기화
     
-    handleClick(i){
-      const squares = this.state.squares.slice();
-      // 기존 배열을 수정하지 않고 사본을 생성하여 수정함 > 불변성!
-      // 이전 버전 이력을 유지하고 재사용
-      // 변화 감지 > 복잡도 낮춤
-      // 리액트에서 렌더링 시기 결정
-      if(calculateWinner(squares) || squares[i]){
-        return;
-      }
-      squares[i] = this.state.xIsNext ? 'X' : 'O';
-      // 'X';
-      this.setState({
-        squares : squares,
-        xIsNext : !this.state.xIsNext, // 네 턴이야
-      });
-    }
-    // 지금까지와 동일하게 클릭하면 X 채워짐
-    // state가 각 Square 컴포넌트가 아니라 Board 컴포넌트에 채워짐
-    // 모든 사각형의 상태를 유지하여 이후 승자 판결 가능해짐
-    // Square 컴포넌트는 이제 제어 가능함
-    
   renderSquare(i) {
     return (    
         <Square 
         // value ={i}
         // 버튼에 value prop 전달
-        value = {this.state.squares[i]} 
+        // value = {this.state.squares[i]} 
         // 각 Square에게 현재 값 전달
         
-        onClick={() => this.handleClick(i)}
+        // onClick={() => this.handleClick(i)}
         // 리액트에 클릭 이벤트 설정하라고 전달
         // 버튼 클릭하면 render() 함수에 정의된 onClick 이벤트 핸들러 호출
         // 이벤트 핸들러는 this.props.onClick() 호출
         // Board에서 Square로 위에 있는 프로퍼티 전달했으므로 this.handleClick(i)호출
         // handleClick 정의 안했으므로 코드 깨지는 것이 정상임
+
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
         />
     );
   }
-
-
 
   render() {
     const winner = calculateWinner(this.state.squares);
@@ -130,7 +110,8 @@ class Board extends React.Component {
 
     return (
       <div>
-        <div className="status">{status}</div>
+        {/* <div className="status">{status}</div> */}
+        {/* Game 컴포넌트에서 관리하므로 생략가능 */}
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -152,22 +133,99 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      history : [{
+        squares: Array(9).fill(null),
+      }],
+      stepNumber : 0,
+      xIsNext: true, 
+    }
+    // 초기 state 설정
+  }
+
+  handleClick(i){
+    const history = this.state.history.slice(0, this.state.stepNumber +1);
+    // this.state.history;
+    const current = history[history.length-1];
+    const squares = current.squares.slice();
+    // 기록 목록을 history로 연결
+
+    //const squares = this.state.squares.slice();
+    // 기존 배열을 수정하지 않고 사본을 생성하여 수정함 > 불변성!
+    // 이전 버전 이력을 유지하고 재사용
+    // 변화 감지 > 복잡도 낮춤
+    // 리액트에서 렌더링 시기 결정
+    if(calculateWinner(squares) || squares[i]){
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    // 'X';
+    this.setState({
+      history: history.concat([{
+        // push는 기존 배열을 변경함 > 배열 변경 없는 concat 적용 권장함
+        squares: squares,
+      }]), 
+      // squares : squares,
+      stepNumber: history.length,
+      xIsNext : !this.state.xIsNext, // 네 턴이야
+    });
+  }
+  // 지금까지와 동일하게 클릭하면 X 채워짐
+  // state가 각 Square 컴포넌트가 아니라 Board 컴포넌트에 채워짐
+  // 모든 사각형의 상태를 유지하여 이후 승자 판결 가능해짐
+  // Square 컴포넌트는 이제 제어 가능함
+
+  jumpTo(step){
+    this.setState({
+      stepNumber : step,
+      xIsNext: (step % 2) === 0,
+    })
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    // history[history.length-1];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ? 
+      'Go to move #' + move :
+      'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={()=> this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
+
+    let status;
+    if(winner){
+      status = "Winner: "+ winner;
+    }else{
+      status = "Next player: " + (this.state.xIsNext ? 'X' : 'O')
+    }
+    // 가장 최근 기록을 사용
+    // 게임의 상태를 확인하고 표시
+
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            squares = {current.squares}
+            onClick={(i)=> this.handleClick(i)}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{status}</div>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
   }
 }
-
-// https://ko.reactjs.org/tutorial/tutorial.html#adding-time-travel 여기부터 다시 시작
 
 ReactDOM.render(
   <Game />,
