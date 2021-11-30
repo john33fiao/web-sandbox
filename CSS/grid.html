@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>그리드</title>
+    <style>
+        #grid {
+            border: 5px solid pink;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            /* 하나는 150px, 나머지 공간은 1fr
+            fr은 나머지 공간을 자동으로 차지하도록 함
+            1fr 2fr 쓰면 각각 1:2로 나누어 가짐
+            */
+        }
+
+        div {
+            border: 4px solid grey;
+        }
+    </style>
+</head>
+
+<!-- 참고
+https://caniuse.com
+특정한 태그를 어떤 브라우저에서 지원하는지/안하는지 확인할 수 있음
+-->
+
+<body>
+    <div id="grid">
+        <!-- 나란히 배치하기 위해서는 그것을 감싸는 부모 태그가 필요함 -->
+        <div class="">NAVIGATION</div>
+        <div class="">
+            <!-- <h2>ARTICLE</h2> -->
+            <!-- <p>  -->
+                Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a
+                document
+                written in a markup language.[1] Although most often used to set the visual style of web pages and user
+                interfaces written in HTML and XHTML, the language can be applied to any XML document, including plain
+                XML, SVG
+                and XUL, and is applicable to rendering in speech, or on other media. Along with HTML and JavaScript,
+                CSS is a
+                cornerstone technology used by most websites to create visually engaging webpages, user interfaces for
+                web
+                applications, and user interfaces for many mobile applications.
+            <!-- </p> -->
+        </div>
+    </div>
+    <!-- div는 아무 의미가 없이 그냥 구분을 위한 태그, 디자인 용도로만 사용, 블럭 레벨 엘리번트-->
+    <!-- 인라인 필요하면 span 사용할 것 -->
+</body>
+
+</html>
