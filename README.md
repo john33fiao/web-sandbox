@@ -14,6 +14,6 @@
 
 [리액트 공식 자습서](https://ko.reactjs.org/docs/getting-started.html)와 함께, [단계별 살펴보기](https://ko.reactjs.org/docs/hello-world.html)를 동시에 진행했습니다.
 
----------
+## CSS
 
-그냥 코틀린 배우러 가면 안될까요? 
+[생활코딩 WEBn](https://opentutorials.org/course/3083)과정 중, [WEB2 - CSS](https://opentutorials.org/course/3086) 부분에 대한 공부 자료입니다. 
