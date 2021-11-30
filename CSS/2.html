@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>WEB - CSS</title>
+    <meta charset="utf-8">
+
+    <style>
+        /* 이 안쪽에 있는 내용은 CSS이므로, CSS 문법에 맞게 처리하라고 브라우저에 요청  */
+
+        /* 선택자 */
+        a {
+            /* color: black; */
+            /* a 태그 모두에 대해서 폰트 붉은색 일괄 적용 */
+            /* 선언문 */
+            text-decoration: none;
+            /* property : value */
+            color: black;
+        }
+
+        #active {
+            color: red;
+        }
+
+        .saw {
+            color: green;
+        }
+        
+        /* 클래스는 먼저 나온 것을 적용하니까 순서 바뀌면 적용 달라진다 */
+        /* 아이디가 우선순위 더 높다 */
+        /* 아이디는 원칙적으로 한 번만 동작하도록 하는 방식이 좋다
+        물론 여러 번 나와도 여러 번 동작하기는 한다
+        그래서 아이디는 어지간하면 사용하지 마라 하드코딩 할 거 아니면 */
+
+        h1 {
+            /* font-size: 3em; */
+            font-size: 45px;
+            /* em 사이즈는 어디에 쓰는 거였더라  */
+
+            text-align: center;
+            /* align : 정렬 */
+
+        }
+
+        h1{
+            border-bottom: 1px solid grey;
+            margin: 0;
+            padding: 20px;
+        }
+
+        ol{
+            border-right: 1px solid grey;
+            width: 100px;
+            margin: 0;
+            padding: 20px;
+        }
+
+        body{
+            margin: 0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1><a href="index.html">WEB</a></h1>
+
+    <!-- <hr> -->
+
+    <ol>
+        <li><a href="1.html" class="saw">HTML</a></li>
+        <li><a href="2.html" class="saw" id="active">CSS</a></li>
+        <li><a href="3.html">JavaScript</a></li>
+    </ol>
+
+    <h2>CSS</h2>
+    
+    <p>
+        Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document
+        written in a markup language.[1] Although most often used to set the visual style of web pages and user
+        interfaces written in HTML and XHTML, the language can be applied to any XML document, including plain XML, SVG
+        and XUL, and is applicable to rendering in speech, or on other media. Along with HTML and JavaScript, CSS is a
+        cornerstone technology used by most websites to create visually engaging webpages, user interfaces for web
+        applications, and user interfaces for many mobile applications.
+    </p>
+</body>
+
+</html>
