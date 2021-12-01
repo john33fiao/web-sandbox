@@ -58,17 +58,29 @@
             margin: 0;
         }
 
-        #grid{
+        #grid {
             display: grid;
             grid-template-columns: 150px 1fr;
         }
-        #article{
+
+        #article {
             padding: 25px;
             margin: 0px;
         }
 
-        #article h2{
+        #article h2 {
             margin-top: 0px;
+        }
+
+        @media(max-width:800px) {
+
+            /* 800px보다 작을 때 */
+            #grid {
+                display: block;
+            }
+            h1{
+                border: none;
+            }
         }
     </style>
 

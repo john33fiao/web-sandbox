@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>미디어 쿼리</title>
+    <!-- 반응형 웹 진행 https://opentutorials.org/course/3086/18323
+    웹은 표시하는 디바이스마다 해상도 파편화가 매우 많고, 이는 웹의 단점 중 하나였다
+    오늘은 CSS 를 사용해서 반응형 웹을 구현하는 미디어쿼리를 알아볼 예정 
+    동일한 html 파일이라도 해상도에 따라 다르게 표시될 예정
+    -->
+
+    <style>
+        div {
+            border: 10px solid green;
+            font-size: 60px;
+        }
+
+        /* screen width > 800px */
+        @media(min-width:800px) {
+
+            /* 800px 이상인 경우(최소 800px인 경우) 동작하는 미디어 쿼리 */
+            div {
+                display: none;
+            }
+        }
+
+        @media(max-width) {
+            /* 800px 이하인 경우(최대 800px 까지) 동작하는 미디어 쿼리 */
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        Responsive
+    </div>
+
+</body>
+
+</html>
