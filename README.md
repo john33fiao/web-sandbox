@@ -7,8 +7,9 @@
 
 ## Node.js
 
-구름 에듀 [한 눈에 끝내는 Node.js](https://edu.goorm.io/lecture/557/%ED%95%9C-%EB%88%88%EC%97%90-%EB%81%9D%EB%82%B4%EB%8A%94-node-js) 강의를 학습한 결과입니다. 
+1. 구름 에듀 [한 눈에 끝내는 Node.js](https://edu.goorm.io/lecture/557/%ED%95%9C-%EB%88%88%EC%97%90-%EB%81%9D%EB%82%B4%EB%8A%94-node-js) 강의를 학습한 결과입니다. 
 생각보다 쉽지는 않아서 일단 중단 후 병합했습니다. 
+2. [생활코딩 WEBn](https://opentutorials.org/course/3083) 과정 중, [WEB2 - Node.js](https://opentutorials.org/course/3332)를 통해 기초부터 다시 공부해보려 합니다.
 
 ## React
 
